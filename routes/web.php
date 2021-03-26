@@ -26,10 +26,15 @@ Route::post('/login', 'Auth\LoginController@login');
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 
-Route::get('/added', 'Auth\RegisterController@added');
+Route::get('/added/{name?}', 'Auth\RegisterController@added');
 
 
 //ログイン中のページ
+Route::group(['middleware' => 'auth'],function(){
+
+
+Route::get('/home','HomeController@index')->name('home');
+
 Route::get('/top','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
@@ -39,5 +44,5 @@ Route::get('/search','UsersController@index');
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
-
-
+//Route::get('/logout','');//
+});

@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!! Form::open() !!}
+{{ Form::open(array 'route' => 'home') }}
 
 <p>DAWNSNSへようこそ</p>
 
